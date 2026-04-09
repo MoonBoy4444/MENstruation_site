@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <path d="M200 160h400l80 140-80 140H200l-80-140z" fill="rgba(255,255,255,0.18)"/>
+  <rect x="220" y="190" width="360" height="220" rx="110" fill="#fffbeb"/>
+  <rect x="280" y="235" width="240" height="130" rx="65" fill="#fde68a"/>
+  <text x="55" y="535" fill="#fff7ed" font-size="48" font-family="Arial" font-weight="700">Legendary Drop Premium</text>
+</svg>

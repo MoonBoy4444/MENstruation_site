@@ -1,0 +1,48 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#140B18"/>
+  <rect x="28" y="28" width="1144" height="844" rx="36" fill="url(#bg)"/>
+  <circle cx="918" cy="154" r="210" fill="url(#glow1)"/>
+  <circle cx="248" cy="700" r="210" fill="url(#glow2)"/>
+  <g filter="url(#shadow)">
+    <path d="M386 214C436 192 500 178 600 178C700 178 764 192 814 214L878 628C838 658 786 680 720 696L650 748H550L480 696C414 680 362 658 322 628L386 214Z" fill="#1F1125"/>
+    <path d="M450 244C486 230 532 222 600 222C668 222 714 230 750 244L782 606C734 628 683 640 600 640C517 640 466 628 418 606L450 244Z" fill="url(#body)"/>
+    <path d="M470 320C492 308 531 300 600 300C669 300 708 308 730 320L748 526C717 539 680 548 600 548C520 548 483 539 452 526L470 320Z" fill="#FFF0F6"/>
+    <path d="M495 344C520 336 552 332 600 332C648 332 680 336 705 344L718 494C686 508 651 514 600 514C549 514 514 508 482 494L495 344Z" fill="url(#core)"/>
+    <path d="M518 374H682" stroke="#FFD86A" stroke-width="10" stroke-linecap="round" stroke-opacity="0.85"/>
+    <path d="M532 416H668" stroke="#FFD86A" stroke-width="10" stroke-linecap="round" stroke-opacity="0.64"/>
+    <path d="M542 458H658" stroke="#FFD86A" stroke-width="10" stroke-linecap="round" stroke-opacity="0.46"/>
+    <path d="M446 244L386 214L322 628L418 606L446 244Z" fill="#2D1734"/>
+    <path d="M754 244L814 214L878 628L782 606L754 244Z" fill="#2D1734"/>
+    <path d="M478 696H722" stroke="#FF79C9" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <rect x="96" y="88" width="240" height="54" rx="27" fill="#26152A"/>
+  <text x="132" y="123" fill="#FFD86A" font-family="Arial, sans-serif" font-size="28" font-weight="700">MENstruation</text>
+  <text x="94" y="716" fill="#FFF7FB" font-family="Arial, sans-serif" font-size="60" font-weight="700">Slip couche Premium</text>
+  <text x="94" y="764" fill="#E6CAD8" font-family="Arial, sans-serif" font-size="30">Edition premium pour setup RGB, confort plus dense.</text>
+  <text x="94" y="816" fill="#FFD86A" font-family="Arial, sans-serif" font-size="26" font-weight="700">Absorption 8h • Finition luxe • Rouge pulse</text>
+  <defs>
+    <linearGradient id="bg" x1="112" y1="80" x2="1090" y2="828" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#160C1A"/>
+      <stop offset="1" stop-color="#29112D"/>
+    </linearGradient>
+    <linearGradient id="body" x1="450" y1="222" x2="750" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#53245C"/>
+      <stop offset="1" stop-color="#241227"/>
+    </linearGradient>
+    <linearGradient id="core" x1="494" y1="332" x2="705" y2="514" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF2A8"/>
+      <stop offset="1" stop-color="#FF8ED8"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(918 154) rotate(90) scale(210)">
+      <stop stop-color="#FF7D52"/>
+      <stop offset="1" stop-color="#FF7D52" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(248 700) rotate(90) scale(210)">
+      <stop stop-color="#FF4FBF"/>
+      <stop offset="1" stop-color="#FF4FBF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="270" y="148" width="660" height="652" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="26" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+</svg>

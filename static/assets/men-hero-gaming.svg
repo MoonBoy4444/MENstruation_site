@@ -1,0 +1,38 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="48" fill="#090F1A"/>
+  <rect x="32" y="32" width="1536" height="836" rx="40" fill="url(#bg)"/>
+  <circle cx="1258" cy="148" r="220" fill="url(#glow1)"/>
+  <circle cx="304" cy="788" r="280" fill="url(#glow2)"/>
+  <path d="M1088 246C1180 246 1252 314 1252 398V512C1252 602 1180 674 1088 674H920C828 674 756 602 756 512V398C756 314 828 246 920 246H1088Z" fill="#121B2B" stroke="#2BE4D3" stroke-opacity="0.26" stroke-width="8"/>
+  <circle cx="886" cy="460" r="50" fill="#0A1625" stroke="#31EAD7" stroke-width="12"/>
+  <rect x="1000" y="372" width="60" height="180" rx="18" fill="#0A1625" stroke="#FF6E3E" stroke-width="12"/>
+  <rect x="940" y="432" width="180" height="60" rx="18" fill="#0A1625" stroke="#FF6E3E" stroke-width="12"/>
+  <circle cx="1114" cy="404" r="18" fill="#FFD86D"/>
+  <circle cx="1160" cy="450" r="18" fill="#30EAD8"/>
+  <circle cx="1114" cy="496" r="18" fill="#FF6E3E"/>
+  <circle cx="1068" cy="450" r="18" fill="#FF4FC1"/>
+  <path d="M756 450H672L614 384H428L350 482H244" stroke="#30EAD8" stroke-opacity="0.42" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1252 450H1336L1394 384H1480" stroke="#FF6E3E" stroke-opacity="0.42" stroke-width="10" stroke-linecap="round"/>
+  <text x="112" y="236" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="118" font-weight="700">MENstruation</text>
+  <text x="114" y="326" fill="#B5C3DA" font-family="Arial, sans-serif" font-size="40">Protection adulte gaming, designE pour les longues sessions.</text>
+  <text x="114" y="418" fill="#2BE4D3" font-family="Arial, sans-serif" font-size="34" font-weight="700">Slip couche • Calecon couche • Legging couche</text>
+  <text x="114" y="474" fill="#F7F8FC" font-family="Arial, sans-serif" font-size="34">Une boutique qui assume son univers, avec un style gamer premium.</text>
+  <rect x="114" y="564" width="270" height="66" rx="33" fill="#111E31"/>
+  <text x="164" y="607" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="28" font-weight="700">Vibe neon immersive</text>
+  <rect x="410" y="564" width="250" height="66" rx="33" fill="#231329"/>
+  <text x="466" y="607" fill="#FFD86D" font-family="Arial, sans-serif" font-size="28" font-weight="700">Collection premium</text>
+  <defs>
+    <linearGradient id="bg" x1="88" y1="72" x2="1478" y2="842" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1321"/>
+      <stop offset="1" stop-color="#171B2D"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1258 148) rotate(90) scale(220)">
+      <stop stop-color="#FF6E3E"/>
+      <stop offset="1" stop-color="#FF6E3E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(304 788) rotate(90) scale(280)">
+      <stop stop-color="#2BE4D3"/>
+      <stop offset="1" stop-color="#2BE4D3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

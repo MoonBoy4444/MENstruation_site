@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="650" cy="140" r="90" fill="#fde68a" opacity="0.5"/>
+  <rect x="170" y="200" width="460" height="220" rx="110" fill="#e2e8f0"/>
+  <rect x="240" y="245" width="320" height="130" rx="65" fill="#94a3b8"/>
+  <text x="80" y="540" fill="#f8fafc" font-size="54" font-family="Arial" font-weight="700">Night Boss XL</text>
+</svg>

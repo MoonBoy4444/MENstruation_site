@@ -1,0 +1,47 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#130E1F"/>
+  <rect x="28" y="28" width="1144" height="844" rx="36" fill="url(#bg)"/>
+  <circle cx="938" cy="154" r="202" fill="url(#glow1)"/>
+  <circle cx="220" cy="736" r="224" fill="url(#glow2)"/>
+  <g filter="url(#shadow)">
+    <path d="M360 190C426 170 496 160 600 160C704 160 774 170 840 190L888 642C842 670 792 688 718 704L658 774H542L482 704C408 688 358 670 312 642L360 190Z" fill="#251733"/>
+    <path d="M420 224C462 212 515 206 600 206C685 206 738 212 780 224L806 618C754 638 696 648 600 648C504 648 446 638 394 618L420 224Z" fill="url(#body)"/>
+    <path d="M394 618L452 774H548L512 648L394 618Z" fill="#2A1832"/>
+    <path d="M806 618L748 774H652L688 648L806 618Z" fill="#2A1832"/>
+    <rect x="430" y="250" width="340" height="44" rx="22" fill="#FFF1F7"/>
+    <text x="483" y="279" fill="#2C1734" font-family="Arial, sans-serif" font-size="26" font-weight="700">MENstruation</text>
+    <rect x="470" y="318" width="260" height="236" rx="32" fill="#FFF4F8"/>
+    <rect x="494" y="344" width="212" height="184" rx="28" fill="url(#core)"/>
+    <path d="M522 380H678" stroke="#FFD76C" stroke-width="10" stroke-linecap="round" stroke-opacity="0.85"/>
+    <path d="M536 424H664" stroke="#FFD76C" stroke-width="10" stroke-linecap="round" stroke-opacity="0.65"/>
+    <path d="M548 468H652" stroke="#FFD76C" stroke-width="10" stroke-linecap="round" stroke-opacity="0.45"/>
+  </g>
+  <text x="92" y="716" fill="#FFF7FC" font-family="Arial, sans-serif" font-size="60" font-weight="700">Calecon couche Premium</text>
+  <text x="92" y="764" fill="#DDBFD1" font-family="Arial, sans-serif" font-size="30">Maintien renforcE, profil premium, grosse session competitive.</text>
+  <text x="92" y="816" fill="#FFD76C" font-family="Arial, sans-serif" font-size="26" font-weight="700">Absorption 10h • Finition premium • Ember / Frost</text>
+  <defs>
+    <linearGradient id="bg" x1="104" y1="84" x2="1090" y2="836" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#160F25"/>
+      <stop offset="1" stop-color="#2A1633"/>
+    </linearGradient>
+    <linearGradient id="body" x1="422" y1="206" x2="778" y2="648" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#603172"/>
+      <stop offset="1" stop-color="#2C1634"/>
+    </linearGradient>
+    <linearGradient id="core" x1="494" y1="344" x2="706" y2="528" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF2B2"/>
+      <stop offset="1" stop-color="#FF8FD5"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(938 154) rotate(90) scale(202)">
+      <stop stop-color="#FF8A4F"/>
+      <stop offset="1" stop-color="#FF8A4F" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(220 736) rotate(90) scale(224)">
+      <stop stop-color="#F54DBE"/>
+      <stop offset="1" stop-color="#F54DBE" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="264" y="130" width="672" height="700" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="26" flood-color="#000000" flood-opacity="0.48"/>
+    </filter>
+  </defs>
+</svg>

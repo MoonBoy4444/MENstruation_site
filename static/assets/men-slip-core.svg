@@ -1,0 +1,51 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#08111F"/>
+  <rect x="28" y="28" width="1144" height="844" rx="36" fill="url(#bg)"/>
+  <circle cx="964" cy="188" r="196" fill="url(#glow1)" fill-opacity="0.9"/>
+  <circle cx="202" cy="742" r="228" fill="url(#glow2)" fill-opacity="0.55"/>
+  <path d="M170 134H444L516 284H686L756 134H1030" stroke="#3EE7D2" stroke-opacity="0.28" stroke-width="10" stroke-linecap="round"/>
+  <path d="M242 176H410" stroke="#FF5E2B" stroke-width="12" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <path d="M385 220C437 196 500 182 600 182C700 182 763 196 815 220L872 624C833 652 790 672 726 690L654 750H546L474 690C410 672 367 652 328 624L385 220Z" fill="#111A2D"/>
+    <path d="M455 250C487 238 532 230 600 230C668 230 713 238 745 250L780 598C737 618 687 632 600 632C513 632 463 618 420 598L455 250Z" fill="url(#body)"/>
+    <path d="M470 248L386 220L328 624L420 598L470 248Z" fill="#192742"/>
+    <path d="M730 248L814 220L872 624L780 598L730 248Z" fill="#192742"/>
+    <path d="M430 602C471 616 522 632 600 632C678 632 729 616 770 602L724 678H476L430 602Z" fill="#0E1527"/>
+    <path d="M470 322C490 314 527 306 600 306C673 306 710 314 730 322L750 520C720 533 682 542 600 542C518 542 480 533 450 520L470 322Z" fill="#EBEDF5"/>
+    <path d="M494 344C518 336 549 332 600 332C651 332 682 336 706 344L721 496C694 505 660 512 600 512C540 512 506 505 479 496L494 344Z" fill="url(#core)"/>
+    <path d="M516 376H684" stroke="#7BFFF0" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7"/>
+    <path d="M532 418H668" stroke="#7BFFF0" stroke-width="10" stroke-linecap="round" stroke-opacity="0.55"/>
+    <path d="M544 460H656" stroke="#7BFFF0" stroke-width="10" stroke-linecap="round" stroke-opacity="0.4"/>
+    <path d="M476 690H724" stroke="#3EE7D2" stroke-width="12" stroke-linecap="round" stroke-opacity="0.65"/>
+  </g>
+  <rect x="96" y="88" width="214" height="54" rx="27" fill="#0E2034"/>
+  <text x="132" y="123" fill="#8AFBF1" font-family="Arial, sans-serif" font-size="28" font-weight="700">MENstruation</text>
+  <text x="94" y="716" fill="#F7F9FF" font-family="Arial, sans-serif" font-size="60" font-weight="700">Slip couche Core</text>
+  <text x="94" y="764" fill="#AAB7D0" font-family="Arial, sans-serif" font-size="30">Look sobre, maintien discret, vibe gaming nocturne.</text>
+  <text x="94" y="816" fill="#3EE7D2" font-family="Arial, sans-serif" font-size="26" font-weight="700">Absorption 6h • Coupe adulte • Noir carbone</text>
+  <defs>
+    <linearGradient id="bg" x1="110" y1="86" x2="1098" y2="830" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C1323"/>
+      <stop offset="1" stop-color="#111E34"/>
+    </linearGradient>
+    <linearGradient id="body" x1="454" y1="230" x2="746" y2="646" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A3858"/>
+      <stop offset="1" stop-color="#151E32"/>
+    </linearGradient>
+    <linearGradient id="core" x1="490" y1="332" x2="710" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A6FFF5"/>
+      <stop offset="1" stop-color="#57C9FF"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(964 188) rotate(90) scale(196)">
+      <stop stop-color="#FF5E2B"/>
+      <stop offset="1" stop-color="#FF5E2B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(202 742) rotate(90) scale(228)">
+      <stop stop-color="#34F2E2"/>
+      <stop offset="1" stop-color="#34F2E2" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="276" y="152" width="648" height="650" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="26" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+</svg>

@@ -1,0 +1,47 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#140B19"/>
+  <rect x="28" y="28" width="1144" height="844" rx="36" fill="url(#bg)"/>
+  <circle cx="978" cy="176" r="220" fill="url(#glow1)"/>
+  <circle cx="180" cy="724" r="220" fill="url(#glow2)"/>
+  <g filter="url(#shadow)">
+    <path d="M444 168C491 156 544 150 600 150C656 150 709 156 756 168L774 344L730 804H640L620 458H580L560 804H470L426 344L444 168Z" fill="url(#body)"/>
+    <path d="M470 196C508 188 550 184 600 184C650 184 692 188 730 196L738 276H462L470 196Z" fill="#FFF0F6"/>
+    <text x="500" y="241" fill="#2A1532" font-family="Arial, sans-serif" font-size="25" font-weight="700">MENstruation</text>
+    <rect x="504" y="292" width="192" height="246" rx="34" fill="#FFF5F8"/>
+    <rect x="526" y="316" width="148" height="198" rx="26" fill="url(#core)"/>
+    <path d="M540 354H660" stroke="#FFD96C" stroke-width="10" stroke-linecap="round" stroke-opacity="0.82"/>
+    <path d="M548 394H652" stroke="#FFD96C" stroke-width="10" stroke-linecap="round" stroke-opacity="0.6"/>
+    <path d="M556 434H644" stroke="#FFD96C" stroke-width="10" stroke-linecap="round" stroke-opacity="0.42"/>
+    <path d="M512 538L484 804H560L580 458H620L640 804H716L688 538H512Z" fill="#2A1833"/>
+    <path d="M484 804H560" stroke="#FF79C9" stroke-width="12" stroke-linecap="round"/>
+    <path d="M640 804H716" stroke="#FF79C9" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <text x="92" y="716" fill="#FFF6FB" font-family="Arial, sans-serif" font-size="60" font-weight="700">Legging couche Premium</text>
+  <text x="92" y="764" fill="#E2C3D7" font-family="Arial, sans-serif" font-size="30">Edition premium cyber, plus dense, plus immersive, plus stable.</text>
+  <text x="92" y="816" fill="#FFD96C" font-family="Arial, sans-serif" font-size="26" font-weight="700">Absorption 8h • Compression premium • Aurora / Carbon</text>
+  <defs>
+    <linearGradient id="bg" x1="102" y1="80" x2="1082" y2="830" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#150B1B"/>
+      <stop offset="1" stop-color="#2B1330"/>
+    </linearGradient>
+    <linearGradient id="body" x1="458" y1="150" x2="742" y2="804" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#633274"/>
+      <stop offset="1" stop-color="#25142C"/>
+    </linearGradient>
+    <linearGradient id="core" x1="526" y1="316" x2="674" y2="514" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF3B1"/>
+      <stop offset="1" stop-color="#FF93D8"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(978 176) rotate(90) scale(220)">
+      <stop stop-color="#FF8A53"/>
+      <stop offset="1" stop-color="#FF8A53" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(180 724) rotate(90) scale(220)">
+      <stop stop-color="#FF4CBD"/>
+      <stop offset="1" stop-color="#FF4CBD" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="372" y="122" width="456" height="742" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="26" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+</svg>

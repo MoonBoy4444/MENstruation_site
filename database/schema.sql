@@ -1,0 +1,125 @@
+CREATE TABLE IF NOT EXISTS typeclient (
+    IdTypeCli INTEGER PRIMARY KEY AUTOINCREMENT,
+    NomTypeCli TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS client (
+    IdCli INTEGER PRIMARY KEY AUTOINCREMENT,
+    IdTypeCli INTEGER NOT NULL,
+    NomCli TEXT NOT NULL,
+    PrenomCli TEXT NOT NULL,
+    DateNaissanceCli TEXT NOT NULL,
+    MailCli TEXT NOT NULL UNIQUE,
+    MdpCli TEXT NOT NULL,
+    FavoriCli TEXT DEFAULT '',
+    TelCli TEXT DEFAULT '',
+    FOREIGN KEY (IdTypeCli) REFERENCES typeclient (IdTypeCli)
+);
+
+CREATE TABLE IF NOT EXISTS adresse (
+    IdAddr INTEGER PRIMARY KEY AUTOINCREMENT,
+    TypeAddr TEXT NOT NULL,
+    RueAddr TEXT NOT NULL,
+    VilleAddr TEXT NOT NULL,
+    CPAddr TEXT NOT NULL,
+    PaysAddr TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS possede (
+    IdCli INTEGER NOT NULL,
+    IdAddr INTEGER NOT NULL,
+    PRIMARY KEY (IdCli, IdAddr),
+    FOREIGN KEY (IdCli) REFERENCES client (IdCli) ON DELETE CASCADE,
+    FOREIGN KEY (IdAddr) REFERENCES adresse (IdAddr) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS paiement (
+    IdPay INTEGER PRIMARY KEY AUTOINCREMENT,
+    LibellePay TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS typeproduits (
+    IdTypeProd INTEGER PRIMARY KEY AUTOINCREMENT,
+    NomTypeProd TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS produits (
+    IdProd INTEGER PRIMARY KEY AUTOINCREMENT,
+    IdTypeProd INTEGER NOT NULL,
+    NomProd TEXT NOT NULL,
+    PrixProd REAL NOT NULL,
+    StockProd INTEGER NOT NULL,
+    ImageProd TEXT NOT NULL,
+    TailleProd TEXT NOT NULL,
+    RefProd TEXT NOT NULL UNIQUE,
+    DescProd TEXT NOT NULL,
+    CouleurProd TEXT NOT NULL,
+    GammeProd TEXT NOT NULL,
+    AbsorptionProd TEXT NOT NULL,
+    UsageProd TEXT NOT NULL,
+    PointsFortsProd TEXT NOT NULL,
+    BadgeProd TEXT NOT NULL DEFAULT '',
+    FOREIGN KEY (IdTypeProd) REFERENCES typeproduits (IdTypeProd)
+);
+
+CREATE TABLE IF NOT EXISTS commande (
+    IdCde INTEGER PRIMARY KEY AUTOINCREMENT,
+    IdPay INTEGER NOT NULL,
+    IdCli INTEGER NOT NULL,
+    StatutCde TEXT NOT NULL,
+    MontantCde REAL NOT NULL,
+    EstPayeCde INTEGER NOT NULL CHECK (EstPayeCde IN (0, 1)),
+    DateCde TEXT NOT NULL DEFAULT (DATE('now')),
+    FOREIGN KEY (IdPay) REFERENCES paiement (IdPay),
+    FOREIGN KEY (IdCli) REFERENCES client (IdCli)
+);
+
+CREATE TABLE IF NOT EXISTS lignecommande (
+    IdCde INTEGER NOT NULL,
+    IdProd INTEGER NOT NULL,
+    Reduction REAL NOT NULL DEFAULT 0,
+    Quantite INTEGER NOT NULL,
+    PRIMARY KEY (IdCde, IdProd),
+    FOREIGN KEY (IdCde) REFERENCES commande (IdCde) ON DELETE CASCADE,
+    FOREIGN KEY (IdProd) REFERENCES produits (IdProd)
+);
+
+CREATE TABLE IF NOT EXISTS livraison (
+    IdLivr INTEGER PRIMARY KEY AUTOINCREMENT,
+    IdAddr INTEGER NOT NULL,
+    IdCde INTEGER NOT NULL UNIQUE,
+    NomLivr TEXT NOT NULL,
+    ChoixLivr TEXT NOT NULL,
+    DelaiLivr TEXT NOT NULL,
+    FraisLivr REAL NOT NULL,
+    DateLivr TEXT NOT NULL,
+    FOREIGN KEY (IdAddr) REFERENCES adresse (IdAddr),
+    FOREIGN KEY (IdCde) REFERENCES commande (IdCde) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS transactionpaiement (
+    IdTransac INTEGER PRIMARY KEY AUTOINCREMENT,
+    IdCde INTEGER NOT NULL UNIQUE,
+    StatutTransac TEXT NOT NULL,
+    MontantTransac REAL NOT NULL,
+    DeviseTransac TEXT NOT NULL DEFAULT 'EUR',
+    ReferenceTransac TEXT NOT NULL UNIQUE,
+    PorteurTransac TEXT NOT NULL,
+    MarqueTransac TEXT NOT NULL,
+    MasqueTransac TEXT NOT NULL,
+    QuatreDerniersTransac TEXT NOT NULL DEFAULT '',
+    CreeLeTransac TEXT NOT NULL DEFAULT (DATETIME('now')),
+    FOREIGN KEY (IdCde) REFERENCES commande (IdCde) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS avis (
+    IdAvis INTEGER PRIMARY KEY AUTOINCREMENT,
+    IdProd INTEGER NOT NULL,
+    IdCli INTEGER NOT NULL,
+    TitreAvis TEXT NOT NULL,
+    MsgAvis TEXT NOT NULL,
+    NoteAvis INTEGER NOT NULL CHECK (NoteAvis BETWEEN 1 AND 5),
+    DateAvis TEXT NOT NULL,
+    FOREIGN KEY (IdProd) REFERENCES produits (IdProd) ON DELETE CASCADE,
+    FOREIGN KEY (IdCli) REFERENCES client (IdCli) ON DELETE CASCADE
+);
