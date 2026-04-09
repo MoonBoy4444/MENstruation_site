@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ produit.nomProd }} — Ma Boutique{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('app_home') }}">Accueil</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('app_produits') }}">Produits</a></li>
+        <li class="breadcrumb-item active">{{ produit.nomProd }}</li>
+    </ol>
+</nav>
+
+<div class="row g-5 mb-5">
+    <div class="col-md-5">
+        {% if produit.imageProd %}
+            <img src="{{ asset('uploads/produits/' ~ produit.imageProd) }}" class="img-fluid rounded" alt="{{ produit.nomProd }}">
+        {% else %}
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-center" style="height:400px;">
+                <i class="bi bi-image text-white" style="font-size:4rem;"></i>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-7">
+        {% if produit.typeProduit %}
+            <span class="badge bg-secondary mb-2">{{ produit.typeProduit.nomTypeProd }}</span>
+        {% endif %}
+        <h1 class="h2">{{ produit.nomProd }}</h1>
+        <p class="text-muted small">Réf. {{ produit.refProd }}</p>
+
+        {% set note = produit.noteMoyenne %}
+        {% if note %}
+            <div class="star-rating fs-5 mb-3">
+                {% for i in 1..5 %}<i class="bi bi-star{{ i <= note|round ? '-fill' : '' }}"></i>{% endfor %}
+                <small class="text-muted fs-6">({{ produit.avis|length }} avis)</small>
+            </div>
+        {% endif %}
+
+        <p class="fs-2 fw-bold text-dark">{{ produit.prixProd|number_format(2, ',', ' ') }} €</p>
+
+        {% if produit.tailleProd %}
+            <p><strong>Taille :</strong> {{ produit.tailleProd }}</p>
+        {% endif %}
+
+        <div class="mb-3">
+            {% if produit.stockProd > 0 %}
+                <span class="badge bg-success"><i class="bi bi-check-circle"></i> En stock ({{ produit.stockProd }} disponibles)</span>
+            {% else %}
+                <span class="badge bg-danger"><i class="bi bi-x-circle"></i> Rupture de stock</span>
+            {% endif %}
+        </div>
+
+        {% if produit.descProd %}
+            <div class="border-top pt-3">
+                <p>{{ produit.descProd }}</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{# Section Avis #}
+<div class="border-top pt-4">
+    <h3 class="mb-4"><i class="bi bi-chat-left-text"></i> Avis clients ({{ produit.avis|length }})</h3>
+
+    {% if app.user and not dejaCommente %}
+        <div class="card mb-4 border-0 bg-light">
+            <div class="card-body">
+                <h5>Laisser un avis</h5>
+                {{ form_start(avisForm) }}
+                    <div class="mb-3">{{ form_label(avisForm.titreAvis) }}{{ form_widget(avisForm.titreAvis, {attr: {class: 'form-control'}}) }}</div>
+                    <div class="mb-3">
+                        {{ form_label(avisForm.noteAvis) }}
+                        <div class="d-flex gap-3 mt-1">{{ form_widget(avisForm.noteAvis) }}</div>
+                    </div>
+                    <div class="mb-3">{{ form_label(avisForm.msgAvis) }}{{ form_widget(avisForm.msgAvis, {attr: {class: 'form-control'}}) }}</div>
+                    <button type="submit" class="btn btn-dark">Publier mon avis</button>
+                {{ form_end(avisForm) }}
+            </div>
+        </div>
+    {% elseif not app.user %}
+        <div class="alert alert-info mb-4">
+            <a href="{{ path('app_login') }}">Connectez-vous</a> pour laisser un avis.
+        </div>
+    {% elseif dejaCommente %}
+        <div class="alert alert-success mb-4">Vous avez déjà laissé un avis sur ce produit.</div>
+    {% endif %}
+
+    {% for avis in produit.avis %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <h6 class="card-title mb-1">{{ avis.titreAvis }}</h6>
+                    <small class="text-muted">{{ avis.dateAvis|date('d/m/Y') }}</small>
+                </div>
+                <div class="star-rating mb-2">
+                    {% for i in 1..5 %}<i class="bi bi-star{{ i <= avis.noteAvis ? '-fill' : '' }}"></i>{% endfor %}
+                </div>
+                <p class="card-text">{{ avis.msgAvis }}</p>
+                <small class="text-muted">Par <strong>{{ avis.client.prenomCli }}</strong></small>
+            </div>
+        </div>
+    {% else %}
+        <p class="text-muted">Aucun avis pour ce produit. Soyez le premier !</p>
+    {% endfor %}
+</div>
+{% endblock %}
