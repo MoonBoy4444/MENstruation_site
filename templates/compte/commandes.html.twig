@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mes commandes{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group mb-4">
+            <a href="{{ path('app_compte') }}" class="list-group-item list-group-item-action">
+                <i class="bi bi-person me-2"></i>Mon profil
+            </a>
+            <a href="{{ path('app_compte_commandes') }}" class="list-group-item list-group-item-action active">
+                <i class="bi bi-box me-2"></i>Mes commandes
+            </a>
+            <a href="{{ path('app_compte_avis') }}" class="list-group-item list-group-item-action">
+                <i class="bi bi-star me-2"></i>Mes avis
+            </a>
+            <a href="{{ path('app_logout') }}" class="list-group-item list-group-item-action text-danger">
+                <i class="bi bi-box-arrow-right me-2"></i>Déconnexion
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <h2 class="mb-4">Mes commandes ({{ commandes|length }})</h2>
+
+        {% if commandes is empty %}
+            <div class="text-center py-5 text-muted">
+                <i class="bi bi-box-seam fs-1"></i>
+                <p class="mt-3">Vous n'avez passé aucune commande pour l'instant.</p>
+                <a href="{{ path('app_produits') }}" class="btn btn-dark">
+                    <i class="bi bi-bag me-1"></i> Découvrir nos produits
+                </a>
+            </div>
+        {% else %}
+            {% for commande in commandes|sort((a, b) => b.dateCommande <=> a.dateCommande) %}
+                <div class="card mb-4">
+                    <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+                        <div>
+                            <strong>Commande #{{ commande.idCde }}</strong>
+                            <span class="text-muted ms-2 small">
+                                du {{ commande.dateCommande|date('d/m/Y à H:i') }}
+                            </span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            {# Badge statut #}
+                            {% set statutClasses = {
+                                'en_attente' : 'bg-warning text-dark',
+                                'confirmee'  : 'bg-info text-dark',
+                                'expediee'   : 'bg-primary',
+                                'livree'     : 'bg-success',
+                                'annulee'    : 'bg-danger'
+                            } %}
+                            {% set statutLabels = {
+                                'en_attente' : 'En attente',
+                                'confirmee'  : 'Confirmée',
+                                'expediee'   : 'Expédiée',
+                                'livree'     : 'Livrée',
+                                'annulee'    : 'Annulée'
+                            } %}
+                            <span class="badge {{ statutClasses[commande.statutCde] ?? 'bg-secondary' }}">
+                                {{ statutLabels[commande.statutCde] ?? commande.statutCde }}
+                            </span>
+
+                            {# Badge paiement #}
+                            {% if commande.estPayeCde %}
+                                <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Payée</span>
+                            {% else %}
+                                <span class="badge bg-danger"><i class="bi bi-clock me-1"></i>Non payée</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="card-body p-0">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="ps-3">Produit</th>
+                                    <th class="text-center">Qté</th>
+                                    <th class="text-end">Prix unit.</th>
+                                    <th class="text-end">Réduction</th>
+                                    <th class="text-end pe-3">Sous-total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ligne in commande.lignesCommande %}
+                                    <tr>
+                                        <td class="ps-3">
+                                            <a href="{{ path('app_produit_show', {id: ligne.produit.idProd}) }}"
+                                               class="text-decoration-none text-dark fw-semibold">
+                                                {{ ligne.produit.nomProd }}
+                                            </a>
+                                            <br>
+                                            <small class="text-muted">Réf. {{ ligne.produit.refProd }}</small>
+                                        </td>
+                                        <td class="text-center align-middle">{{ ligne.quantite }}</td>
+                                        <td class="text-end align-middle">
+                                            {{ ligne.produit.prixProd|number_format(2, ',', ' ') }} €
+                                        </td>
+                                        <td class="text-end align-middle">
+                                            {% if ligne.reduction > 0 %}
+                                                <span class="text-success">-{{ ligne.reduction|number_format(2, ',', ' ') }} €</span>
+                                            {% else %}
+                                                <span class="text-muted">—</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-end align-middle pe-3 fw-semibold">
+                                            {{ ligne.sousTotal|number_format(2, ',', ' ') }} €
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="row align-items-start">
+                            {# Infos livraison #}
+                            <div class="col-md-4 small text-muted">
+                                {% if commande.livraison %}
+                                    <p class="mb-1">
+                                        <i class="bi bi-truck me-1"></i>
+                                        <strong>{{ commande.livraison.nomLivr }}</strong>
+                                        {% if commande.livraison.fraisLivr %}
+                                            ({{ commande.livraison.fraisLivr|number_format(2, ',', ' ') }} €)
+                                        {% endif %}
+                                    </p>
+                                    {% if commande.livraison.dateLivr %}
+                                        <p class="mb-0">
+                                            Livraison prévue le {{ commande.livraison.dateLivr|date('d/m/Y') }}
+                                        </p>
+                                    {% endif %}
+                                {% endif %}
+                                {% if commande.paiement %}
+                                    <p class="mb-0 mt-1">
+                                        <i class="bi bi-credit-card me-1"></i>{{ commande.paiement.libellePay }}
+                                    </p>
+                                {% endif %}
+                            </div>
+
+                            {# Adresse de livraison #}
+                            <div class="col-md-4 small text-muted">
+                                {% if commande.adresseLivraison %}
+                                    <p class="mb-1"><i class="bi bi-geo-alt me-1"></i><strong>Adresse de livraison</strong></p>
+                                    <p class="mb-0">
+                                        {{ commande.adresseLivraison.rueAddr }}<br>
+                                        {{ commande.adresseLivraison.cpAddr }} {{ commande.adresseLivraison.villeAddr }}<br>
+                                        {{ commande.adresseLivraison.paysAddr }}
+                                    </p>
+                                {% endif %}
+                            </div>
+
+                            {# Total #}
+                            <div class="col-md-4 text-end">
+                                <p class="mb-0 fs-5 fw-bold">
+                                    Total : {{ commande.montantCde|number_format(2, ',', ' ') }} €
+                                </p>
+                                {% if commande.livraison and commande.livraison.fraisLivr %}
+                                    <small class="text-muted">
+                                        dont {{ commande.livraison.fraisLivr|number_format(2, ',', ' ') }} € de frais de livraison
+                                    </small>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

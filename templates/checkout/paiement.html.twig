@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+{% include 'checkout/_steps.html.twig' %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <h3 class="mb-4"><i class="bi bi-credit-card me-2"></i>Paiement</h3>
+
+        {# Récapitulatif adresse + livraison #}
+        <div class="card mb-3 border-0 bg-light">
+            <div class="card-body small">
+                <div class="row">
+                    <div class="col-6">
+                        <strong><i class="bi bi-geo-alt me-1"></i>Livraison à</strong><br>
+                        {{ adresseData.rue }}<br>
+                        {{ adresseData.cp }} {{ adresseData.ville }}<br>
+                        {{ adresseData.pays }}
+                    </div>
+                    <div class="col-6">
+                        <strong><i class="bi bi-truck me-1"></i>Mode de livraison</strong><br>
+                        {{ livraison.nomLivr }}<br>
+                        {% if livraison.delaiLivr %}{{ livraison.delaiLivr }} jour(s){% endif %}
+                        — {{ livraison.fraisLivr|number_format(2, ',', ' ') }} €
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                {{ form_start(form) }}
+                <div class="mb-4">
+                    {% for child in form.paiement %}
+                        <div class="form-check p-3 border rounded mb-2">
+                            {{ form_widget(child, {attr: {class: 'form-check-input'}}) }}
+                            {{ form_label(child, null, {label_attr: {class: 'form-check-label w-100 ms-2 fw-semibold'}}) }}
+                        </div>
+                    {% endfor %}
+                    {{ form_errors(form.paiement) }}
+                </div>
+
+                <div class="alert alert-light border small mb-4">
+                    <i class="bi bi-shield-check text-success me-1"></i>
+                    Vos données de paiement sont chiffrées et sécurisées. Nous ne stockons aucun numéro de carte.
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="{{ path('app_checkout_livraison') }}" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i> Retour
+                    </a>
+                    {{ form_widget(form.confirmer) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        {% include 'checkout/_recap.html.twig' with {livraison: livraison} %}
+    </div>
+</div>
+{% endblock %}

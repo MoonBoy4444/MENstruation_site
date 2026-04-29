@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+{% block title %}Commande confirmée !{% endblock %}
+
+{% block body %}
+<div class="text-center py-5">
+    <div class="mb-4">
+        <i class="bi bi-check-circle-fill text-success" style="font-size:5rem;"></i>
+    </div>
+    <h1 class="h2 mb-2">Merci pour votre commande !</h1>
+    <p class="text-muted fs-5 mb-1">
+        Commande <strong>#{{ commande.idCde }}</strong> enregistrée avec succès.
+    </p>
+    <p class="text-muted">
+        Un email de confirmation vous sera envoyé à
+        <strong>{{ commande.client.mailCli }}</strong>.
+    </p>
+</div>
+
+<div class="row justify-content-center mt-2">
+    <div class="col-lg-7">
+
+        {# Détail de la commande #}
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <strong>Détail de votre commande</strong>
+                <span class="badge bg-warning text-dark">En attente</span>
+            </div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-3">Produit</th>
+                            <th class="text-center">Qté</th>
+                            <th class="text-end pe-3">Sous-total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ligne in commande.lignesCommande %}
+                            <tr>
+                                <td class="ps-3">
+                                    {{ ligne.produit.nomProd }}
+                                    <div class="text-muted small">{{ ligne.produit.prixProd|number_format(2, ',', ' ') }} € / unité</div>
+                                </td>
+                                <td class="text-center">{{ ligne.quantite }}</td>
+                                <td class="text-end pe-3 fw-semibold">
+                                    {{ ligne.sousTotal|number_format(2, ',', ' ') }} €
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6 small text-muted">
+                        {% if commande.adresseLivraison %}
+                            <strong><i class="bi bi-geo-alt me-1"></i>Livraison à</strong><br>
+                            {{ commande.adresseLivraison.rueAddr }}<br>
+                            {{ commande.adresseLivraison.cpAddr }} {{ commande.adresseLivraison.villeAddr }}
+                        {% endif %}
+                        {% if commande.livraison %}
+                            <div class="mt-2">
+                                <i class="bi bi-truck me-1"></i>{{ commande.livraison.nomLivr }}
+                                ({{ commande.livraison.fraisLivr|number_format(2, ',', ' ') }} €)
+                            </div>
+                        {% endif %}
+                        {% if commande.paiement %}
+                            <div><i class="bi bi-credit-card me-1"></i>{{ commande.paiement.libellePay }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <div class="fs-4 fw-bold text-dark">
+                            Total : {{ commande.montantCde|number_format(2, ',', ' ') }} €
+                        </div>
+                        <div class="text-muted small">TVA incluse</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-3 justify-content-center">
+            <a href="{{ path('app_compte_commandes') }}" class="btn btn-outline-dark">
+                <i class="bi bi-box me-1"></i> Voir mes commandes
+            </a>
+            <a href="{{ path('app_produits') }}" class="btn btn-dark">
+                <i class="bi bi-bag me-1"></i> Continuer mes achats
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block title %}Adresse de livraison{% endblock %}
+
+{% block body %}
+{% include 'checkout/_steps.html.twig' %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <h3 class="mb-4"><i class="bi bi-geo-alt me-2"></i>Adresse de livraison</h3>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                {{ form_start(form) }}
+
+                {% if form.adresse_existante is defined %}
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-2">Vos adresses enregistrées</h6>
+                        {{ form_widget(form.adresse_existante, {attr: {class: 'form-select', id: 'adresse_select'}}) }}
+                    </div>
+                    <hr class="my-4">
+                    <h6 class="text-muted mb-3">Ou saisir une nouvelle adresse</h6>
+                {% endif %}
+
+                <div class="mb-3">
+                    {{ form_label(form.typeAddr) }}
+                    {{ form_widget(form.typeAddr, {attr: {class: 'form-select'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.rueAddr) }}
+                    {{ form_widget(form.rueAddr, {attr: {class: 'form-control', placeholder: '12 rue des Lilas'}}) }}
+                    {{ form_errors(form.rueAddr) }}
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-4">
+                        {{ form_label(form.cpAddr) }}
+                        {{ form_widget(form.cpAddr, {attr: {class: 'form-control', placeholder: '75011'}}) }}
+                    </div>
+                    <div class="col-8">
+                        {{ form_label(form.villeAddr) }}
+                        {{ form_widget(form.villeAddr, {attr: {class: 'form-control', placeholder: 'Paris'}}) }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.paysAddr) }}
+                    {{ form_widget(form.paysAddr, {attr: {class: 'form-control'}}) }}
+                </div>
+                <div class="form-check mb-4">
+                    {{ form_widget(form.sauvegarder, {attr: {class: 'form-check-input'}}) }}
+                    {{ form_label(form.sauvegarder, null, {label_attr: {class: 'form-check-label'}}) }}
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="{{ path('app_cart_index') }}" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i> Retour au panier
+                    </a>
+                    {{ form_widget(form.suivant, {attr: {class: 'btn btn-dark btn-lg px-5'}}) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    {# Mini récap panier #}
+    <div class="col-lg-4">
+        {% include 'checkout/_recap.html.twig' %}
+    </div>
+</div>
+{% endblock %}
