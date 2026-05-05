@@ -114,5 +114,18 @@ La base SQLite est geree par :
 - `database/schema.sql`
 - `database/seed.sql`
 - `database/gamerdry.sqlite3`
+- `database/gamerdry_dump.sql`
 
 Le service `SqliteStore` reconstruit automatiquement la base si le schema attendu est absent ou incoherent.
+
+Pour la presentation et GitHub :
+
+- `database/gamerdry.sqlite3` est versionnee dans le depot
+- `database/gamerdry_dump.sql` permet de lire toute la base en texte sur GitHub
+- la page `/database-preview` permet de consulter les tables directement dans le navigateur
+
+Sous WAMP, la page de consultation est accessible a l adresse :
+
+```text
+http://localhost/MENstruation_site/public/database-preview
+```
