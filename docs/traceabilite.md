@@ -10,9 +10,9 @@ Ce document fait le lien entre les exigences attendues et leur implementation da
 
 - Statut: conforme
 - Preuves:
-  - [schema.sql](/Users/user/Desktop/MENstruations/database/schema.sql)
-  - [seed.sql](/Users/user/Desktop/MENstruations/database/seed.sql)
-  - [database.py](/Users/user/Desktop/MENstruations/backend/database.py)
+  - [schema.sql](/Users/user/Desktop/MENstruations/MENstruation_site/database/schema.sql)
+  - [seed.sql](/Users/user/Desktop/MENstruations/MENstruation_site/database/seed.sql)
+  - [SqliteStore.php](/Users/user/Desktop/MENstruations/MENstruation_site/src/Infrastructure/SqliteStore.php)
 - Couvre:
   - clients
   - produits
@@ -25,9 +25,9 @@ Ce document fait le lien entre les exigences attendues et leur implementation da
 
 - Statut: conforme
 - Preuves:
-  - [repositories.py](/Users/user/Desktop/MENstruations/backend/repositories.py)
-  - [authViewModel.js](/Users/user/Desktop/MENstruations/static/js/viewmodels/authViewModel.js)
-  - [server.py](/Users/user/Desktop/MENstruations/backend/server.py)
+  - [authViewModel.js](/Users/user/Desktop/MENstruations/MENstruation_site/public/js/viewmodels/authViewModel.js)
+  - [ApiController.php](/Users/user/Desktop/MENstruations/MENstruation_site/src/Controller/ApiController.php)
+  - [ShopService.php](/Users/user/Desktop/MENstruations/MENstruation_site/src/Service/ShopService.php)
 - Couvre:
   - login
   - inscription
@@ -37,9 +37,9 @@ Ce document fait le lien entre les exigences attendues et leur implementation da
 
 - Statut: conforme
 - Preuves:
-  - [AdminRepository](/Users/user/Desktop/MENstruations/backend/repositories.py)
-  - [adminViewModel.js](/Users/user/Desktop/MENstruations/static/js/viewmodels/adminViewModel.js)
-  - [views.js](/Users/user/Desktop/MENstruations/static/js/views.js)
+  - [adminViewModel.js](/Users/user/Desktop/MENstruations/MENstruation_site/public/js/viewmodels/adminViewModel.js)
+  - [views.js](/Users/user/Desktop/MENstruations/MENstruation_site/public/js/views.js)
+  - [ShopService.php](/Users/user/Desktop/MENstruations/MENstruation_site/src/Service/ShopService.php)
 - Couvre:
   - statistiques
   - clients
@@ -50,15 +50,15 @@ Ce document fait le lien entre les exigences attendues et leur implementation da
 
 - Statut: renforce
 - Preuves:
-  - [README.md](/Users/user/Desktop/MENstruations/README.md)
-  - [architecture.md](/Users/user/Desktop/MENstruations/docs/architecture.md)
-  - [documentation-technique.md](/Users/user/Desktop/MENstruations/docs/documentation-technique.md)
+  - [README.md](/Users/user/Desktop/MENstruations/MENstruation_site/README.md)
+  - [architecture.md](/Users/user/Desktop/MENstruations/MENstruation_site/docs/architecture.md)
+  - [documentation-technique.md](/Users/user/Desktop/MENstruations/MENstruation_site/docs/documentation-technique.md)
 
 ### 5. Bonne tracabilite
 
 - Statut: renforce
 - Preuves:
-  - [traceabilite.md](/Users/user/Desktop/MENstruations/docs/traceabilite.md)
+  - [traceabilite.md](/Users/user/Desktop/MENstruations/MENstruation_site/docs/traceabilite.md)
 - Couvre:
   - correspondance exigence / implementation
   - preuves par fichiers
@@ -67,8 +67,8 @@ Ce document fait le lien entre les exigences attendues et leur implementation da
 
 - Statut: renforce
 - Preuves:
-  - [depot.md](/Users/user/Desktop/MENstruations/docs/depot.md)
-  - [.gitignore](/Users/user/Desktop/MENstruations/.gitignore)
+  - [depot.md](/Users/user/Desktop/MENstruations/MENstruation_site/docs/depot.md)
+  - [.gitignore](/Users/user/Desktop/MENstruations/MENstruation_site/.gitignore)
 - Couvre:
   - structure claire
   - depot Git local initialise

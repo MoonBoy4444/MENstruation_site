@@ -2,38 +2,27 @@
 
 ## Organisation
 
-Le depot est structure en quatre zones principales:
+Le depot est maintenant structure autour de Symfony :
 
-- `backend/`
-  logique serveur, metier et acces aux donnees
-- `database/`
-  schema, seed et base SQLite locale
-- `static/`
-  interface, styles, scripts et assets
-- `docs/`
-  documentation projet
+- `public/` pour l'entree web et les assets
+- `src/` pour le code PHP
+- `database/` pour SQLite
+- `config/` pour la configuration Symfony
+- `docs/` pour la documentation
 
 ## Bonnes pratiques retenues
 
-- separation claire des responsabilites
-- fichiers sources ranges par domaine
-- documentation incluse dans le projet
-- base de donnees versionnee via SQL
-- assets separes du code applicatif
+- un seul backend officiel : PHP / Symfony
+- une base SQLite embarquee avec schema et seed versionnes
+- une separation nette entre controleurs, services et infrastructure
+- une documentation de lancement adaptee a Windows et Linux
 
-## Depot Git
+## Hygiene du depot
 
-Le projet est initialise comme depot Git local pour assurer:
+Les elements techniques a ignorer sont :
 
-- le suivi des modifications
-- la traçabilite de l evolution du projet
-- une meilleure qualite de remise
-
-## Recommandations de depot
-
-Pour garder un bon depot, il faut:
-
-- ignorer les caches Python
-- ignorer la base generee si on veut ne versionner que le schema et le seed
-- documenter les changements importants
-- garder les fichiers techniques et fonctionnels bien separes
+- `.venv/`
+- `__pycache__/`
+- `*.pyc`
+- `var/`
+- `vendor/`

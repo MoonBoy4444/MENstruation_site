@@ -41,6 +41,7 @@ const guestPaymentMethods = [
   { IdPay: 1, LibellePay: "Carte bancaire" },
   { IdPay: 2, LibellePay: "PayPal" },
   { IdPay: 3, LibellePay: "Apple Pay" },
+  { IdPay: 4, LibellePay: "Google Pay" },
 ];
 
 store.subscribe(renderApp);

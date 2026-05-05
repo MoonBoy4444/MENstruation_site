@@ -19,6 +19,10 @@ function emptyState(message) {
   return `<div class="empty-state">${message}</div>`;
 }
 
+function assetPath(value) {
+  return String(value || "").replace(/^\/+/, "");
+}
+
 function statPill(label, value) {
   return `
     <div class="stat-pill">
@@ -58,7 +62,7 @@ function productCard(product) {
   return `
     <article class="product-card">
       <div class="product-image-wrap">
-        <img src="${product.ImageProd}" alt="${product.NomProd}" />
+        <img src="${assetPath(product.ImageProd)}" alt="${product.NomProd}" />
         ${product.BadgeProd ? `<span class="badge badge-overlay">${product.BadgeProd}</span>` : ""}
       </div>
       <div class="product-content">
@@ -146,7 +150,7 @@ function orderCard(order) {
 function cartLine(item) {
   return `
     <article class="cart-line">
-      <img src="${item.ImageProd}" alt="${item.NomProd}" />
+      <img src="${assetPath(item.ImageProd)}" alt="${item.NomProd}" />
       <div class="cart-line-copy">
         <strong>${item.NomProd}</strong>
         <p class="muted">${item.GammeProd} • ${item.CouleurProd} • Taille ${item.TailleProd}</p>
@@ -203,24 +207,24 @@ export function homeTemplate(data) {
         <p class="eyebrow">MENstruation</p>
         <h3>${data.hero.title}</h3>
         <p class="hero-subtitle">${data.hero.subtitle}</p>
-        <p class="muted">${data.hero.description}</p>
+        <p class="muted">Une boutique plus directe, plus lisible et pensee pour des besoins quotidiens reels.</p>
         <div class="mission-grid">
           <article class="mission-card">
-            <p class="eyebrow">Objectif</p>
-            <p>${data.hero.mission.goal}</p>
+            <p class="eyebrow">Selection</p>
+            <p>Des pieces absorbantes adultes choisies pour le confort, le maintien et la discretion.</p>
           </article>
           <article class="mission-card">
-            <p class="eyebrow">Ce qu on veut faire</p>
-            <p>${data.hero.mission.vision}</p>
+            <p class="eyebrow">Approche</p>
+            <p>Un site plus calme, avec des informations utiles, une lecture simple et des visuels plus nets.</p>
           </article>
           <article class="mission-card">
-            <p class="eyebrow">Comment</p>
-            <p>${data.hero.mission.method}</p>
+            <p class="eyebrow">Usage</p>
+            <p>Comparer rapidement les coupes, les niveaux d absorption et les references disponibles.</p>
           </article>
         </div>
         <div class="hero-actions">
-          <button class="btn" data-route="catalog">Explorer la collection</button>
-          <button class="btn-ghost" data-route="cart">Voir le panier</button>
+          <button class="btn" data-route="catalog">Voir la collection</button>
+          <button class="btn-ghost" data-route="cart">Panier</button>
         </div>
         <div class="pill-grid">
           ${statPill("Produits", data.metrics.products)}
@@ -229,10 +233,10 @@ export function homeTemplate(data) {
         </div>
       </article>
       <article class="hero-photo-card">
-        <img src="/assets/men-hero-gaming.svg" alt="Univers MENstruation gamer" />
+        <img src="${assetPath("assets/setup-noir.jpg")}" alt="Selection MENstruation en environnement sobre" />
         <div class="hero-photo-copy">
-          <p class="eyebrow">Vibe gamer</p>
-          <h3>Un univers plus neon, plus adulte, plus assume pour la marque MENstruation.</h3>
+          <p class="eyebrow">Direction</p>
+          <h3>Un langage visuel plus epure, avec davantage d espace et moins d effets.</h3>
         </div>
       </article>
     </section>
@@ -240,7 +244,7 @@ export function homeTemplate(data) {
     <section class="section-title">
       <div>
         <p class="eyebrow">Rayons</p>
-        <h3>Univers de la boutique</h3>
+        <h3>La collection</h3>
       </div>
     </section>
     <div class="mini-grid">
@@ -252,7 +256,7 @@ export function homeTemplate(data) {
         <p class="eyebrow">Selection</p>
         <h3>Produits mis en avant</h3>
       </div>
-      <button class="btn-ghost" data-route="catalog">Tout voir</button>
+      <button class="btn-ghost" data-route="catalog">Voir tout</button>
     </section>
     <div class="product-grid">
       ${data.featuredProducts.map(productCard).join("")}
@@ -333,7 +337,7 @@ export function productTemplate(product, user) {
     <section class="product-hero">
       <article class="detail-card product-detail-grid">
         <div class="product-detail-media">
-          <img src="${product.ImageProd}" alt="${product.NomProd}" />
+          <img src="${assetPath(product.ImageProd)}" alt="${product.NomProd}" />
         </div>
         <div class="product-detail-copy">
           <p class="eyebrow">${product.NomTypeProd}</p>
@@ -431,13 +435,13 @@ export function authTemplate() {
     <div class="auth-layout">
       <section class="panel-card auth-card auth-visual">
         <p class="eyebrow">Compte MENstruation</p>
-        <h3>Connecte-toi pour commander, suivre tes livraisons et retrouver tes avis dans un univers gamer plus fort.</h3>
-        <img src="/assets/men-hero-gaming.svg" alt="Univers MENstruation gamer" />
+        <h3>Retrouve tes commandes, tes adresses et tes achats dans un espace clair et simple a utiliser.</h3>
+        <img src="${assetPath("assets/setup-rgb.jpg")}" alt="Espace compte MENstruation" />
       </section>
 
       <section class="panel-card auth-card">
         <p class="eyebrow">Connexion</p>
-        <h3>Acceder a son espace</h3>
+        <h3>Acceder a votre espace</h3>
         <form id="login-form" class="field-grid">
           <label class="field">
             <span>Email</span>
@@ -453,7 +457,7 @@ export function authTemplate() {
 
       <section class="panel-card auth-card">
         <p class="eyebrow">Inscription</p>
-        <h3>Creer un compte client</h3>
+        <h3>Creer un compte</h3>
         <form id="register-form" class="field-grid">
           <div class="field-grid two">
             <label class="field">

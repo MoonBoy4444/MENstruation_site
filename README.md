@@ -1,108 +1,118 @@
 # MENstruation
 
-Application lourde locale de boutique e-commerce pour protections adultes pensees pour les longues sessions gaming.
+MENstruation est une boutique e-commerce locale construite avec Symfony et SQLite.
+Le point d'entree officiel est `public/index.php`.
 
-## Objectif
+## Fonctionnalites
 
-MENstruation propose une experience de boutique complete:
+- catalogue avec filtres, fiches produit et avis
+- connexion et inscription client
+- profil client avec adresses, statistiques et avis
+- panier, paiement, livraison et creation de commande
+- historique de commandes avec suivi
+- espace administrateur pour consulter les clients et gerer le catalogue
 
-- catalogue produits avec categories, variantes et avis
-- compte client avec inscription et connexion
-- panier, paiement, livraison et suivi de commande
-- back-office administrateur pour piloter le catalogue
-- base de donnees SQLite conforme au besoin metier
+## Stack
 
-## Stack technique
+- Symfony 8
+- PHP 8.4 ou plus recent
+- SQLite
+- HTML, CSS et JavaScript modulaire
 
-- Backend: Python standard library
-- Base de donnees: SQLite
-- Frontend: HTML, CSS, JavaScript modulaire
-- Architecture: MVVM
+## Structure utile
 
-## Fonctionnalites couvertes
+- `public/` : front controller, assets et application frontend
+- `src/Controller/` : routes web et API
+- `src/Service/ShopService.php` : logique metier principale
+- `src/Infrastructure/SqliteStore.php` : acces SQLite et initialisation de la base
+- `database/` : schema SQL, seed SQL et base locale
+- `router.php` : routeur de compatibilite pour `php -S`
 
-- Base de donnees relationnelle avec schema et jeu de donnees
-- Connexion et inscription client
-- Profil client et adresses
-- Catalogue avec recherche, filtres et fiches produits
-- Panier et validation de commande
-- Historique et suivi de commande jusqu a la livraison
-- Avis produits lies au compte client
-- Back-office administrateur
-
-## Lancer l application
+## Installation
 
 ```bash
-python3 app.py
+composer install
 ```
 
-Puis ouvre dans le navigateur l URL affichee dans le terminal, par exemple:
+Extensions PHP attendues :
+
+- `pdo_sqlite`
+- `sqlite3`
+- `ctype`
+- `iconv`
+
+## Lancer le site
+
+### Option 1 : serveur PHP integre
+
+Depuis la racine du projet :
+
+```bash
+php -S 127.0.0.1:8000 -t public router.php
+```
+
+URL :
 
 ```text
-http://127.0.0.1:8002
+http://127.0.0.1:8000/
 ```
 
-Le serveur essaie `8000`, puis les ports suivants jusqu a trouver un port libre.
+### Option 2 : WAMP / Apache sous Windows
+
+Le projet peut fonctionner de deux manieres :
+
+1. Le plus propre : creer un virtual host qui pointe directement vers le dossier `public/`.
+2. Le plus simple : placer le projet dans `www/` puis ouvrir la racine du projet :
+
+```text
+http://localhost/MENstruation_site/
+```
+
+La racine du projet redirige automatiquement vers `public/`.
+
+Points importants pour WAMP :
+
+- activer `mod_rewrite`
+- activer SQLite (`pdo_sqlite` et `sqlite3`)
+- utiliser une version de PHP compatible avec Symfony 8, donc PHP 8.4+
+
+## Verification Symfony
+
+```bash
+php bin/console about
+php bin/console debug:router
+php bin/console cache:clear
+```
 
 ## Comptes de demonstration
 
-- Admin: `admin@gamerdry.local` / `admin123`
-- Client: `player@gamerdry.local` / `player123`
+- Admin : `admin@gamerdry.local` / `admin123`
+- Client : `player@gamerdry.local` / `player123`
 
-## Structure du projet
+## API disponible
 
-```text
-.
-|-- app.py
-|-- backend/
-|   |-- config.py
-|   |-- database.py
-|   |-- repositories.py
-|   |-- server.py
-|   `-- services.py
-|-- database/
-|   |-- gamerdry.sqlite3
-|   |-- schema.sql
-|   `-- seed.sql
-|-- docs/
-|   |-- architecture.md
-|   |-- depot.md
-|   |-- documentation-technique.md
-|   `-- traceabilite.md
-`-- static/
-    |-- assets/
-    |-- index.html
-    |-- js/
-    `-- styles.css
-```
-
-## Documentation disponible
-
-- [architecture.md](/Users/user/Desktop/MENstruations/docs/architecture.md)
-- [documentation-technique.md](/Users/user/Desktop/MENstruations/docs/documentation-technique.md)
-- [traceabilite.md](/Users/user/Desktop/MENstruations/docs/traceabilite.md)
-- [depot.md](/Users/user/Desktop/MENstruations/docs/depot.md)
+- `GET /api/home`
+- `GET /api/catalog`
+- `GET /api/products/{id}`
+- `POST /api/auth/login`
+- `POST /api/auth/register`
+- `GET /api/profile/{id}`
+- `PUT /api/profile/{id}`
+- `GET /api/orders/{id}`
+- `POST /api/orders`
+- `POST /api/reviews`
+- `GET /api/admin/dashboard`
+- `GET /api/admin/clients`
+- `GET /api/admin/products`
+- `POST /api/admin/products`
+- `PUT /api/admin/products`
 
 ## Base de donnees
 
-Le modele metier repose sur les tables suivantes:
+La base SQLite est geree par :
 
-- `client`
-- `typeclient`
-- `adresse`
-- `possede`
-- `paiement`
-- `typeproduits`
-- `produits`
-- `commande`
-- `lignecommande`
-- `livraison`
-- `avis`
+- `database/schema.sql`
+- `database/seed.sql`
+- `database/gamerdry.sqlite3`
 
-Le schema est defini dans [schema.sql](/Users/user/Desktop/MENstruations/database/schema.sql) et les donnees de demonstration dans [seed.sql](/Users/user/Desktop/MENstruations/database/seed.sql).
-
-## Notes
-
-- Les mots de passe sont stockes en hash SHA-256 pour la demonstration.
-- Les visuels produits sont integres localement dans `static/assets/`.
-- Le projet est organise pour rester simple a lancer sans Node.js ni build frontend.
+Le service `SqliteStore` reconstruit automatiquement la base si le schema attendu est absent ou incoherent.

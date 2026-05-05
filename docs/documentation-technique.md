@@ -2,11 +2,11 @@
 
 ## 1. Nature de l application
 
-L application MENstruation est une application lourde locale de type boutique e-commerce.
+L application MENstruation est une boutique e-commerce locale basee sur Symfony.
 
 Elle repond au besoin par:
 
-- un backend Python local
+- un backend PHP / Symfony
 - une base SQLite embarquee
 - une interface web servie localement
 - une logique metier complete autour des comptes, commandes, avis et administration
@@ -105,14 +105,19 @@ Ces donnees permettent de montrer les cas d usage sans saisie complete manuelle.
 ## 6. Lancement
 
 ```bash
-python3 app.py
+php -S 127.0.0.1:8000 -t public router.php
 ```
 
-Puis ouvrir l URL affichee dans le terminal.
+Ou, sous WAMP :
+
+```text
+http://localhost/MENstruation_site/public/
+```
 
 ## 7. Points de qualite
 
 - separation claire frontend / backend / donnees
 - pas de dependance a un outil de build frontend
 - schema SQL versionne dans le projet
+- compatibilite Windows / WAMP et serveur PHP integre
 - documents d architecture, de depot et de traçabilite

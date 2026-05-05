@@ -1,6 +1,7 @@
 export class ApiClient {
   async request(path, options = {}) {
-    const response = await fetch(path, {
+    const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
+    const response = await fetch(normalizedPath, {
       headers: {
         "Content-Type": "application/json",
         ...(options.headers || {}),
